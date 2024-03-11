@@ -13,6 +13,10 @@ Architecture and Feature-Driven Design concept.
 
 ## Getting started
 
+### Requirements
+
+- Python>=3.10.12
+
 ### Installation
 
 You can use the `pip install` method:
