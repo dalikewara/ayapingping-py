@@ -9,7 +9,7 @@ from typing import List
 from dataclasses import dataclass, field
 
 name = 'AyaPingPing (Py)'
-version = 'v4.3.8'
+version = 'v4.3.9'
 path_separator = os.path.sep
 
 
@@ -152,11 +152,13 @@ def import_feature(args):
                                   'Type `y` and press Enter to confirm. Otherwise, the process will be aborted... ',
                                   False)
         if confirmation != 'y':
+            remove_dir(from_path)
             raise ValueError('process aborted')
 
         print('')
 
     else:
+        remove_dir(from_path)
         raise ValueError('no feature found to be imported')
 
     print('Adding features... [RUNNING]')
@@ -199,6 +201,8 @@ def import_feature(args):
                 except Exception as e:
                     print(e)
                     continue
+
+    remove_dir(from_path)
 
     print('Adding features... [OK]')
 
@@ -248,11 +252,13 @@ def import_domain(args):
                                   'Type `y` and press Enter to confirm. Otherwise, the process will be aborted... ',
                                   False)
         if confirmation != 'y':
+            remove_dir(from_path)
             raise ValueError('process aborted')
 
         print('')
 
     else:
+        remove_dir(from_path)
         raise ValueError('no domain found to be imported')
 
     print('Adding domains... [RUNNING]')
@@ -268,6 +274,8 @@ def import_domain(args):
             continue
 
         total_imported += 1
+
+    remove_dir(from_path)
 
     print('Adding domains... [OK]')
 
@@ -317,11 +325,13 @@ def import_common(args):
                                   'Type `y` and press Enter to confirm. Otherwise, the process will be aborted... ',
                                   False)
         if confirmation != 'y':
+            remove_dir(from_path)
             raise ValueError('process aborted')
 
         print('')
 
     else:
+        remove_dir(from_path)
         raise ValueError('no common function found to be imported')
 
     print('Adding common functions... [RUNNING]')
@@ -337,6 +347,8 @@ def import_common(args):
             continue
 
         total_imported += 1
+
+    remove_dir(from_path)
 
     print('Adding common functions... [OK]')
 
