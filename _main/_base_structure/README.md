@@ -99,7 +99,7 @@ You can create folders such as `migration` to store your database migrations, `t
 
 ## Importing Features from Another Project
 
-To seamlessly incorporate or import features from another project, use the `importFeature` command.:
+To seamlessly incorporate or import features from another project, use the `importFeature` command:
 
 ```bash
 ayapingping-py importFeature [feature1,feature2,...] from [/local/project or https://example.com/user/project.git or git@example.com:user/project.git]
@@ -142,6 +142,42 @@ Example `dependency.json` file:
   ]
 }
 
+```
+
+## Importing Domains from Another Project
+
+To import domains from another project, use the `importDomain` command:
+
+```bash
+ayapingping-py importDomain [domain1.py,domain2.py,...] from [/local/project or https://example.com/user/project.git or git@example.com:user/project.git]
+```
+
+For example:
+
+```bash
+ayapingping-py importDomain example.py from /path/to/your/project
+```
+
+```bash
+ayapingping-py importDomain example.py,example2.py from git@github.com:username/project.git
+```
+
+## Importing Common Functions from Another Project
+
+To import common functions from another project, use the `importCommon` command:
+
+```bash
+ayapingping-py importCommon [commonFunction1.py,commonFunction2.py,...] from [/local/project or https://example.com/user/project.git or git@example.com:user/project.git]
+```
+
+For example:
+
+```bash
+ayapingping-py importCommon example_function.py from /path/to/your/project
+```
+
+```bash
+ayapingping-py importCommon example_function1.py,example_function2.py from git@github.com:username/project.git
 ```
 
 ## Release
