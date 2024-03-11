@@ -21,6 +21,36 @@ You can use the `pip install` method:
 pip install ayapingping-py
 ```
 
+#### Possible issue
+
+If you're facing a warning or an issue like this, for example:
+
+```text
+WARNING: The script ayapingping-py is installed in '/home/dalikewara/.local/bin' which is not on PATH.
+Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+```
+
+Then you can install it using the `--user` option, for example:
+
+```bash
+pip install --user --force-reinstall ayapingping-py
+```
+
+Or if it doesn't work, you can add the directory containing the scripts to your **PATH** manually.
+Open your shell configuration file (e.g., `.bashrc`, `.zshrc`, or similar) and add the following line:
+
+```bash
+export PATH=$PATH:/home/dalikewara/.local/bin
+```
+
+Then, restart your shell or run:
+
+```bash
+source ~/.bashrc   # or source ~/.zshrc
+```
+
+This will make the changes take effect immediately.
+
 ### Usage
 
 To generate a new project, simply run the `ayapingping-py` command:
