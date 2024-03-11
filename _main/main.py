@@ -9,7 +9,7 @@ from typing import List
 from dataclasses import dataclass, field
 
 name = 'AyaPingPing (Py)'
-version = 'v4.3.5'
+version = 'v4.3.6'
 path_separator = os.path.sep
 
 

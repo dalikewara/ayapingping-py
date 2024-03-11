@@ -16,6 +16,12 @@ class Example:
     def set_created_at_now(self):
         self.created_at = time_now_utc()
 
+    def get_created_at_str(self) -> str:
+        if self.created_at is None:
+            return ''
+
+        return self.created_at.strftime('%Y-%m-%d %H:%M:%S')
+
     def validate_username(self) -> Exception | None:
         return validate_username(self.username)
 

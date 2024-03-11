@@ -13,6 +13,9 @@ class Env:
     mysql_password: str = os.getenv('MYSQL_PASSWORD', '')
     mysql_db_name: str = os.getenv('MYSQL_DB_NAME', '')
 
+    def get_rest_port_int(self) -> int:
+        return int(self.rest_port)
+
 
 def parse_env() -> tuple[Env | None, Exception | None]:
     try:
