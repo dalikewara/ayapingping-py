@@ -46,4 +46,4 @@ ExampleGetV1Flask(flask_svr, get_example_v1).register_handler('GET', '/api/v1/ex
 # Start & listen application
 
 if __name__ == '__main__':
-    flask_svr.run(port=env_cfg.rest_port, debug=True)
+    flask_svr.run(port=env_cfg.get_rest_port_int(), debug=True)
