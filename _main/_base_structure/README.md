@@ -33,6 +33,8 @@ Then enter your project name. After you confirm your inputs, the **ayapingping-p
 
 ![Alt Text](https://lh3.googleusercontent.com/drive-viewer/AKGpihZVKfRP1YbgPEilKjEypqE84gyuFpsONb8qqVY2qrnZsAkBo68gqR1UioKlq0G2gW_kCZqFVIPYA7kbRJBrRqb-vl3OnA=w840-h939)
 
+> The animated example uses the Golang version, but it essentially follows the same approach
+
 ### What's next?
 
 Simply start working on your project and make changes.
