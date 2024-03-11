@@ -1,0 +1,15 @@
+{
+  "domains": [
+    "example.py"
+  ],
+  "features": [],
+  "commons": [
+    "time_now.py",
+    "validate_username.py"
+  ],
+  "requirements": [
+    "python-dotenv==1.0.1",
+    "mysql-connector-python==8.3.0",
+    "Flask==3.0.2"
+  ]
+}
