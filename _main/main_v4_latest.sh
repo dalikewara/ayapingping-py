@@ -474,7 +474,8 @@ get_raw_json_from_file_for_external() {
     exit 1
   fi
 
-  cat "$1" | tr -d '\n' | tr -s '[:blank:]' ' ' | sed 's/* //g'
+  cat "$1" | tr -d '
+' | tr -s '[:blank:]' ' ' | sed 's/* //g'
 }
 
 get_json_value_by_key() {
@@ -483,7 +484,7 @@ get_json_value_by_key() {
     exit 1
   fi
 
-  get_clean_json_value "$(echo "$1" | tr -d '[:space:]' | sed -n -e "s/.*\"$2\":\[\([^]]*\)\].*/\1/p")"
+  get_clean_json_value "$(echo "$1" | tr -d '[:space:]' | sed -n -e "s/.*\"$2\":\[\([^]]*\)\].*//p")"
 }
 
 get_json_value_by_key_for_external() {
@@ -492,7 +493,7 @@ get_json_value_by_key_for_external() {
     exit 1
   fi
 
-  get_clean_json_value_for_external "$(echo "$1" | sed -n 's/.*"'$2'":\(\[ *\| \[ *\| *\[\)\([^]]*\).*/\2/p')"
+  get_clean_json_value_for_external "$(echo "$1" | sed -n 's/.*"'$2'":\(\[ *\| \[ *\| *\[\)\([^]]*\).*//p')"
 }
 
 get_clean_json_value() {
@@ -501,7 +502,9 @@ get_clean_json_value() {
     exit 1
   fi
 
-  get_clean_string_from_space "$1" | tr -d '"' | tr ',' '\n' | tr -s '\n' ','
+  get_clean_string_from_space "$1" | tr -d '"' | tr ',' '
+' | tr -s '
+' ','
 }
 
 get_clean_json_value_for_external() {
@@ -510,7 +513,9 @@ get_clean_json_value_for_external() {
     exit 1
   fi
 
-  echo "$1" | tr -d '"' |  tr ',' '\n' | tr -s '\n' ',' | tr -d '[:blank:]' | sed -e 's/, */,/g' -e 's/, *$/ /'
+  echo "$1" | tr -d '"' |  tr ',' '
+' | tr -s '
+' ',' | tr -d '[:blank:]' | sed -e 's/, */,/g' -e 's/, *$/ /'
 }
 
 get_clean_string_from_space() {
@@ -685,7 +690,8 @@ remove_contents_from_directory() {
     return 1
   fi
 
-  echo "$2" | tr ',' '\n' | while IFS= read -r _3_item; do
+  echo "$2" | tr ',' '
+' | while IFS= read -r _3_item; do
     _3_item=$(echo "$_3_item" | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//')
 
     find "$1" -name "$_3_item" -exec rm -rf {} \;

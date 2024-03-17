@@ -2,7 +2,7 @@
 
 ## 2024
 
-- **v4.4.0 - v4.4.3** (2024-03-17)
+- **v4.4.0 - v4.4.4** (2024-03-17)
   - Fix `main_v4.sh` permission
   - Fix create `main_v4_latest.sh` permission
   - Fix `_base_structure` permission
