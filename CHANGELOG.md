@@ -2,7 +2,7 @@
 
 ## 2024
 
-- **v4.5.0 - v4.5.2** (2024-03-17)
+- **v4.5.0 - v4.5.3** (2024-03-17)
   - Fix `v4.4.8` including permission issue and adjust generator synchronizer
 
 - **v4.4.0 - v4.4.8** (2024-03-17)

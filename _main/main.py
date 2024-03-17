@@ -4,7 +4,7 @@ import sys
 import urllib.request
 
 name = "AyaPingPing (Py)"
-version = "v4.5.2"
+version = "v4.5.3"
 language = "Python"
 generator_url = "https://raw.githubusercontent.com/dalikewara/ayapingping-sh/master/main_v4.sh"
 generator_file = "main.sh"
@@ -98,7 +98,6 @@ def is_file_valid_sh(path):
             content = file.read()
             return content.startswith(b"#!/bin/sh")
     except Exception as e:
-        print(e)
         return False
 
 
