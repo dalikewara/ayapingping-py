@@ -4,7 +4,7 @@ import sys
 import urllib.request
 
 name = "AyaPingPing (Py)"
-version = "v4.5.1"
+version = "v4.5.2"
 language = "Python"
 generator_url = "https://raw.githubusercontent.com/dalikewara/ayapingping-sh/master/main_v4.sh"
 generator_file = "main.sh"
@@ -61,7 +61,7 @@ def sync_generator(runtime_dir):
             file.write(file_data)
 
     except Exception as e:
-        print(e)
+        pass
 
 
 def check_generator(runtime_dir):
@@ -70,11 +70,11 @@ def check_generator(runtime_dir):
 
     if not is_file(os.path.join(runtime_dir, generator_file)):
         raise FileNotFoundError(
-            "No generator found, please connect to the internet and run the command again to synchronize")
+            "no generator found, please connect to the internet and run the command again to synchronize")
 
     if not is_file_valid_sh(os.path.join(runtime_dir, generator_file)):
         raise ValueError(
-            "Invalid generator file, please connect to the internet and run the command again to synchronize")
+            "invalid generator file, please connect to the internet and run the command again to synchronize")
 
 
 def chmod(runtime_dir):
