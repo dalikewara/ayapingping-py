@@ -3,7 +3,7 @@ import subprocess
 import sys
 
 name = "AyaPingPing (Py)"
-version = "v4.4.2"
+version = "v4.4.3"
 language = "Python"
 path_separator = os.path.sep
 
@@ -27,6 +27,12 @@ def main():
 
     os.chmod(os.path.join(runtime_dir, 'main_v4.sh'), 0o777)
     os.chmod(os.path.join(runtime_dir, 'main_v4_latest.sh'), 0o777)
+
+    for root, dirs, files in os.walk(os.path.join(runtime_dir, '_base_structure')):
+        for dir_name in dirs:
+            os.chmod(os.path.join(root, dir_name), 0o777)
+        for file_name in files:
+            os.chmod(os.path.join(root, file_name), 0o777)
 
     cmd = [os.path.join(runtime_dir, 'main_v4.sh'), version, language, command, value, source_prefix, source]
     subprocess.run(cmd, stdout=sys.stdout, stderr=sys.stderr, stdin=sys.stdin)
