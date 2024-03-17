@@ -9,7 +9,7 @@
 **ayapingping-py** generates standard project structure to build applications in Python that follow Clean
 Architecture and Feature-Driven Design concept.
 
-> Golang variant: [ayapingping-py](https://github.com/dalikewara/ayapingping-go)
+> Golang variant: [ayapingping-go](https://github.com/dalikewara/ayapingping-go)
 
 > TypeScript variant: [ayapingping-ts](https://github.com/dalikewara/ayapingping-ts)
 
