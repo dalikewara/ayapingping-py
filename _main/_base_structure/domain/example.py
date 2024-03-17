@@ -25,6 +25,13 @@ class Example:
     def validate_username(self) -> Exception | None:
         return validate_username(self.username)
 
+    def to_dto1(self) -> 'ExampleDTO1':
+        return ExampleDTO1(
+            id=self.id,
+            username=self.username,
+            created_at=self.get_created_at_str()
+        )
+
 
 @dataclass(frozen=True)
 class ExampleDTO1:

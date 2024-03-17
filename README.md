@@ -9,13 +9,17 @@
 **ayapingping-py** generates standard project structure to build applications in Python that follow Clean
 Architecture and Feature-Driven Design concept.
 
-> Golang Version: [ayapingping-go](https://github.com/dalikewara/ayapingping-go)
+> Golang variant: [ayapingping-py](https://github.com/dalikewara/ayapingping-go)
 
-## Getting started
+> TypeScript variant: [ayapingping-ts](https://github.com/dalikewara/ayapingping-ts)
 
-### Requirements
+## Requirements
 
 - Python>=3.10.12
+- Operating systems supporting `/bin/sh` with **POSIX** standards ([WHY?](https://github.com/dalikewara/ayapingping-sh)).
+**Linux** and **macOS** should have no issues here as they support it by default. For **Windows** users, consider using WSL instead
+
+## Getting started
 
 ### Installation
 
@@ -30,7 +34,7 @@ pip install ayapingping-py
 If you're facing a warning or an issue like this, for example:
 
 ```text
-WARNING: The script ayapingping-py is installed in '/home/dalikewara/.local/bin' which is not on PATH.
+WARNING: The script ayapingping-py is installed in '/your/path/.local/bin' which is not on PATH.
 Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
 ```
 
@@ -41,16 +45,16 @@ pip install --user --force-reinstall ayapingping-py
 ```
 
 Or if it doesn't work, you can add the directory containing the scripts to your **PATH** manually.
-Open your shell configuration file (e.g., `.bashrc`, `.zshrc`, or similar) and add the following line:
+Open your shell configuration file (e.g., `.bashrc`, `.zshrc`, `.profile`, or similar) and add the following line:
 
 ```bash
-export PATH=$PATH:/home/dalikewara/.local/bin
+export PATH=$PATH:/your/path/.local/bin
 ```
 
 Then, restart your shell or run:
 
 ```bash
-source ~/.bashrc   # or source ~/.zshrc
+source ~/.bashrc   # or source ~/.zshrc, ~/.profile or similar
 ```
 
 This will make the changes take effect immediately.
@@ -63,7 +67,7 @@ To generate a new project, simply run the `ayapingping-py` command:
 ayapingping-py
 ```
 
-Then enter your project name. After you confirm your inputs, the **ayapingping-py** generator will set up the project for you.
+Then enter your project name, the **ayapingping-py** generator will set up the project for you.
 
 ![Alt Text](https://lh3.googleusercontent.com/drive-viewer/AKGpihZVKfRP1YbgPEilKjEypqE84gyuFpsONb8qqVY2qrnZsAkBo68gqR1UioKlq0G2gW_kCZqFVIPYA7kbRJBrRqb-vl3OnA=w840-h939)
 
@@ -87,18 +91,18 @@ To implement the concept of Clean Architecture and ~~Domain-Driven Design~~ Feat
 - The **Domain** represents your primary business model or entity
 - Define your main object models or properties for your business here, including database models, DTOs (Data Transfer Objects), etc
 - Keep this package as straightforward as possible. Avoid including any code that is not directly related to the model itself
-- If a **Feature** imports anything from this location, and you want the **Feature** to be accessible through the `importFeature` command 
-without the risk of missing package errors, **DON'T FORGET** to include them in the `features/yourFeature/dependency.json` file
+- If a **Feature** imports anything from this location, and you want the **Feature** to be accessible through the `importFeature` or `exportFeature` command
+  without the risk of missing package errors, **DON'T FORGET** to include them in the `features/yourFeature/dependency.json` file
 
 ### features
 
 - A **Feature** encapsulates your main business feature, logic, or service
 - Here, you include everything necessary to ensure the proper functioning of the feature
 - Please prioritize **Feature-Driven Design**, ensuring that features can be easily adapted and seamlessly integrated and imported into different projects
-- If another **Feature** imports anything from this location (the current **Feature**), and you want the current **Feature** to be 
-accessible through the `importFeature` command without the risk of missing package errors, **DON'T FORGET** to include them in the `dependency.json` file
+- If another **Feature** imports anything from this location (the current **Feature**), and you want the current **Feature** to be
+  accessible through the `importFeature` or `exportFeature` command without the risk of missing package errors, **DON'T FORGET** to include them in the `dependency.json` file
 - The `dependency.json` is **OPTIONAL**, and **ONLY USEFUL WHEN** you use the `importFeature` command. It serves to define
-the **Feature** dependencies and avoids possible missing package errors
+  the **Feature** dependencies and avoids possible missing package errors
 - A standard **Feature** comprises the following parts: `delivery`, `repositories`, `usecases` and `utility`
   - **delivery**
     - Hosts feature handlers like HTTP handlers, gRPC handlers, cron jobs, or anything serving between the client and your application or feature
@@ -121,8 +125,9 @@ the **Feature** dependencies and avoids possible missing package errors
 
 - In this place, you can implement various functions to assist you in performing common tasks—consider them as helpers
 - Common functions can be directly called from any location
-- If a **Domain** or **Feature** imports anything from this location, and you want the **Feature** to be accessible through 
-the `importFeature` command without the risk of missing package errors, **DON'T FORGET** to include them in the `features/yourFeature/dependency.json` file
+- If a **Domain** or **Feature** imports anything from this location, and you want the **Feature** to be accessible through
+  the `importFeature` or `exportFeature` command without the risk of missing package errors, **DON'T FORGET** to include
+  them in the `features/yourFeature/dependency.json` file
 
 ### infra
 
@@ -138,17 +143,17 @@ You can create folders such as `migration` to store your database migrations, `t
 To seamlessly incorporate or import features from another project, use the `importFeature` command:
 
 ```bash
-ayapingping-py importFeature [feature1,feature2,...] from [/local/project or https://example.com/user/project.git or git@example.com:user/project.git]
+ayapingping-py importFeature [feature_1,feature_2,...] from [/local/project or https://example.com/user/project.git or git@example.com:user/project.git]
 ```
 
 For example:
 
 ```bash
-ayapingping-py importFeature exampleFeature from /path/to/your/project
+ayapingping-py importFeature example_feature from /path/to/your/project
 ```
 
 ```bash
-ayapingping-py importFeature exampleFeature1,exampleFeature2 from git@github.com:username/project.git
+ayapingping-py importFeature example_feature_1,example_feature_2 from git@github.com:username/project.git
 ```
 
 ### Feature dependency
@@ -157,7 +162,7 @@ If your feature relies on external packages, it's crucial to address dependencie
 Failure to import necessary dependencies may result in missing packages. To prevent this, please document your feature 
 dependencies in the `dependency.json` file. Supported dependencies are limited to the following directories: `domain`, `common`, and `features`.
 Ensure that your feature dependencies strictly adhere to these directories, avoiding reliance on other locations.
-You can also include any external packages to `requirements` param to install them automatically.
+You can also include any external packages to `externals` param to install them automatically using the `venv/bin/pip install` or `pip install` method.
 
 Example `dependency.json` file:
 
@@ -171,7 +176,7 @@ Example `dependency.json` file:
     "time_now.py",
     "validate_username.py"
   ],
-  "requirements": [
+  "externals": [
     "python-dotenv==1.0.1",
     "mysql-connector-python==8.3.0",
     "Flask==3.0.2"
@@ -180,41 +185,27 @@ Example `dependency.json` file:
 
 ```
 
-## Importing Domains from Another Project
+## Other Commands
 
-To import domains from another project, use the `importDomain` command:
-
-```bash
-ayapingping-py importDomain [domain1.py,domain2.py,...] from [/local/project or https://example.com/user/project.git or git@example.com:user/project.git]
-```
-
-For example:
+There are several commands similar to `importFeature` above, such as `importDomain`, `importCommon`, `exportFeature`, `exportDomain`, etc.
+They function in the same way, for example:
 
 ```bash
 ayapingping-py importDomain example.py from /path/to/your/project
 ```
 
 ```bash
-ayapingping-py importDomain example.py,example2.py from git@github.com:username/project.git
+ayapingping-py importCommon common_function_1.py from https://example.com/user/project.git
 ```
 
-## Importing Common Functions from Another Project
-
-To import common functions from another project, use the `importCommon` command:
+For `export` command, the behavior is similar to the `import` command, but now uses `export` as the prefix and `to` instead of
+`from` when pointing to the source, for example:
 
 ```bash
-ayapingping-py importCommon [commonFunction1.py,commonFunction2.py,...] from [/local/project or https://example.com/user/project.git or git@example.com:user/project.git]
+ayapingping-py exportFeature example_feature to /path/to/your/project
 ```
 
-For example:
-
-```bash
-ayapingping-py importCommon example_function.py from /path/to/your/project
-```
-
-```bash
-ayapingping-py importCommon example_function1.py,example_function2.py from git@github.com:username/project.git
-```
+For more detail and explanation, please visit [ayapingping-sh](https://github.com/dalikewara/ayapingping-sh)
 
 ## Release
 

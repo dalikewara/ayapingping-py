@@ -1,5 +1,4 @@
 from domain.example import ExampleDTO1, GetExampleUseCase, FindExampleByIDRepository
-from features.example.utility.example_dto import new_example_dto1
 
 
 class GetExampleV1(GetExampleUseCase):
@@ -13,7 +12,7 @@ class GetExampleV1(GetExampleUseCase):
             if err is not None:
                 return None, err
 
-            return new_example_dto1(example), None
+            return example.to_dto1(), None
         except Exception as e:
             return None, e
 

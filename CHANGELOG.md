@@ -2,5 +2,12 @@
 
 ## 2024
 
+- **v4.4.0 - v4.4.1** (2024-03-17)
+  - Now using [ayapingping-sh](https://github.com/dalikewara/ayapingping-sh) main shell script
+  - Add command `exportFeature`, `exportDomain` and `exportCommon`
+  - Rename param `requirements` in the `features/yourFeature/dependency.json` file to `externals`
+  - Add support for param `externals` in the `features/yourFeature/dependency.json` file
+  - Change some `_base_structure` scripts
+
 - **v4.3.0 - v4.3.9** (2024-03-11)
   - Initial commit
