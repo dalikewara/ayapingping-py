@@ -4,7 +4,7 @@ import sys
 import urllib.request
 
 name = "AyaPingPing (Py)"
-version = "v4.5.3"
+version = "v4.5.4"
 language = "Python"
 generator_url = "https://raw.githubusercontent.com/dalikewara/ayapingping-sh/master/main_v4.sh"
 generator_file = "main.sh"
@@ -78,14 +78,14 @@ def check_generator(runtime_dir):
 
 
 def chmod(runtime_dir):
-    os.chmod(os.path.join(runtime_dir, generator_file), 0o777)
-    os.chmod(os.path.join(runtime_dir, generator_file_tmp), 0o777)
+    os.chmod(os.path.join(runtime_dir, generator_file), 0o775)
+    os.chmod(os.path.join(runtime_dir, generator_file_tmp), 0o775)
 
     for root, dirs, files in os.walk(os.path.join(runtime_dir, base_structure_dir)):
         for dir_name in dirs:
-            os.chmod(os.path.join(root, dir_name), 0o777)
+            os.chmod(os.path.join(root, dir_name), 0o775)
         for file_name in files:
-            os.chmod(os.path.join(root, file_name), 0o777)
+            os.chmod(os.path.join(root, file_name), 0o664)
 
 
 def is_file(path):
