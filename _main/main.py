@@ -3,7 +3,7 @@ import subprocess
 import sys
 
 name = "AyaPingPing (Py)"
-version = "v4.4.7"
+version = "v4.4.8"
 language = "Python"
 path_separator = os.path.sep
 
