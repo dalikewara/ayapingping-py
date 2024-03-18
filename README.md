@@ -1,10 +1,16 @@
 # ayapingping-py
 
-![PyPI - Python Version](https://img.shields.io/pypi/pyversions/ayapingping-py)
-![PyPI - Version](https://img.shields.io/pypi/v/ayapingping-py)
-![PyPI - Downloads](https://img.shields.io/pypi/dm/ayapingping-py)
-![GitHub tag (latest SemVer)](https://img.shields.io/github/v/tag/dalikewara/ayapingping-py)
-![GitHub license](https://img.shields.io/github/license/dalikewara/ayapingping-py)
+![python](https://img.shields.io/pypi/pyversions/ayapingping-py.svg?style=flat)
+![version](https://img.shields.io/pypi/v/ayapingping-py.svg?style=flat)
+![download](https://img.shields.io/pypi/dm/ayapingping-py.svg?style=flat)
+![dependents](https://img.shields.io/librariesio/dependents/pypi/ayapingping-py.svg?style=flat)
+
+![build](https://img.shields.io/circleci/project/github/dalikewara/ayapingping-py.svg?style=flat)
+![language](https://img.shields.io/github/languages/top/dalikewara/ayapingping-py.svg?style=flat)
+![issue](https://img.shields.io/github/issues/dalikewara/ayapingping-py.svg?style=flat)
+![last_commit](https://img.shields.io/github/last-commit/dalikewara/ayapingping-py.svg?style=flat)
+![github_tag](https://img.shields.io/github/v/tag/dalikewara/ayapingping-py.svg?style=flat)
+![github_license](https://img.shields.io/github/license/dalikewara/ayapingping-py.svg?style=flat)
 
 **ayapingping-py** generates standard project structure to build applications in Python that follow Clean
 Architecture and Feature-Driven Design concept.
@@ -17,7 +23,7 @@ Architecture and Feature-Driven Design concept.
 
 - Python>=3.10.12
 - Operating systems supporting `/bin/sh` with **POSIX** standards ([WHY?](https://github.com/dalikewara/ayapingping-sh)).
-**Linux** and **macOS** should have no issues here as they support it by default. For **Windows** users, consider using WSL instead
+  **Linux** and **macOS** should have no issues here as they support it by default. For **Windows** users, consider using WSL instead
 
 ## Getting started
 
@@ -83,8 +89,8 @@ To implement the concept of Clean Architecture and ~~Domain-Driven Design~~ Feat
 
 ### main.py
 
-- In this file, you initialize dependencies, injections, and anything required to start and run your application.
-- You can use the command `venv/bin/python main.py`, `python main.py` or `make start` to run your application.
+- In this file, you initialize dependencies, injections, and anything required to start and run your application
+- You can use the command `venv/bin/python main.py`, `python main.py` or `make start` to run your application
 
 ### domain
 
@@ -101,7 +107,7 @@ To implement the concept of Clean Architecture and ~~Domain-Driven Design~~ Feat
 - Please prioritize **Feature-Driven Design**, ensuring that features can be easily adapted and seamlessly integrated and imported into different projects
 - If another **Feature** imports anything from this location (the current **Feature**), and you want the current **Feature** to be
   accessible through the `importFeature` or `exportFeature` command without the risk of missing package errors, **DON'T FORGET** to include them in the `dependency.json` file
-- The `dependency.json` is **OPTIONAL**, and **ONLY USEFUL WHEN** you use the `importFeature` command. It serves to define
+- The `dependency.json` is **OPTIONAL**, and **ONLY USEFUL WHEN** you use the `importFeature` or `exportFeature` command. It serves to define
   the **Feature** dependencies and avoids possible missing package errors
 - A standard **Feature** comprises the following parts: `delivery`, `repositories`, `usecases` and `utility`
   - **delivery**
@@ -135,7 +141,7 @@ To implement the concept of Clean Architecture and ~~Domain-Driven Design~~ Feat
 
 ### Make It Your Own
 
-Feel free to create your own style to suit your requirements, as long as you still follow the main architecture concept. 
+Feel free to create your own style to suit your requirements, as long as you still follow the main architecture concept.
 You can create folders such as `migration` to store your database migrations, `tmp` for temporary files, etc.
 
 ## Importing Features from Another Project
@@ -158,8 +164,8 @@ ayapingping-py importFeature example_feature_1,example_feature_2 from git@github
 
 ### Feature dependency
 
-If your feature relies on external packages, it's crucial to address dependencies properly during the import process. 
-Failure to import necessary dependencies may result in missing packages. To prevent this, please document your feature 
+If your feature relies on external packages, it's crucial to address dependencies properly during the import process.
+Failure to import necessary dependencies may result in missing packages. To prevent this, please document your feature
 dependencies in the `dependency.json` file. Supported dependencies are limited to the following directories: `domain`, `common`, and `features`.
 Ensure that your feature dependencies strictly adhere to these directories, avoiding reliance on other locations.
 You can also include any external packages to `externals` param to install them automatically using the `venv/bin/pip install` or `pip install` method.
@@ -169,12 +175,16 @@ Example `dependency.json` file:
 ```json
 {
   "domains": [
-    "example.py"
+    "domain_1.py",
+    "domain_2.py"
   ],
-  "features": [],
+  "features": [
+    "feature1",
+    "feature2"
+  ],
   "commons": [
-    "time_now.py",
-    "validate_username.py"
+    "common_function_1.py",
+    "common_function_2.py"
   ],
   "externals": [
     "python-dotenv==1.0.1",
@@ -182,7 +192,6 @@ Example `dependency.json` file:
     "Flask==3.0.2"
   ]
 }
-
 ```
 
 ## Other Commands
