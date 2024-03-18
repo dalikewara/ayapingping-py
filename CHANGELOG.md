@@ -2,8 +2,9 @@
 
 ## 2024
 
-- **v4.5.4** (2024-03-18)
+- **v4.5.4 - v4.5.5** (2024-03-18)
   - Restrict permission
+  - Update some scripts
 
 - **v4.5.0 - v4.5.3** (2024-03-17)
   - Fix `v4.4.8` including permission issue and adjust generator synchronizer
