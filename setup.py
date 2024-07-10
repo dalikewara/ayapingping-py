@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setup(
     name='ayapingping-py',
-    version='4.5.5',
+    version='4.6.0',
     python_requires='>=3.10.12',
     author='Dali Kewara',
     author_email='dalikewara@gmail.com',

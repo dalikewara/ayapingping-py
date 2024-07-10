@@ -1,7 +1,6 @@
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 from datetime import datetime
 from abc import ABC, abstractmethod
-from typing import List
 from common.time_now import time_now_utc
 from common.validate_username import validate_username
 
@@ -25,13 +24,6 @@ class Example:
     def validate_username(self) -> Exception | None:
         return validate_username(self.username)
 
-    def to_dto1(self) -> 'ExampleDTO1':
-        return ExampleDTO1(
-            id=self.id,
-            username=self.username,
-            created_at=self.get_created_at_str()
-        )
-
 
 @dataclass(frozen=True)
 class ExampleDTO1:
@@ -40,30 +32,30 @@ class ExampleDTO1:
     created_at: str = ''
 
 
-@dataclass(frozen=True)
-class ExampleJSONPresenter:
-    code: str = ''
-    message: str = ''
-    data: dict = field(default_factory=dict)
-    error: List[str] = field(default_factory=list)
+def new_dto1(example: Example) -> ExampleDTO1:
+    return ExampleDTO1(
+        id=example.id,
+        username=example.username,
+        created_at=example.get_created_at_str()
+    )
 
 
-class FindExampleByIDRepository(ABC):
+class ExampleRepository(ABC):
 
     @abstractmethod
-    def exec(self, example_id: int) -> tuple[Example | None, Exception | None]:
+    def find_by_id(self, example_id: int) -> tuple[Example | None, Exception | None]:
         raise NotImplementedError
 
 
-class GetExampleUseCase(ABC):
+class ExampleUseCase(ABC):
 
     @abstractmethod
-    def exec(self, example_id: int) -> tuple[ExampleDTO1 | None, Exception | None]:
+    def get_detail(self, example_id: int) -> tuple[ExampleDTO1 | None, Exception | None]:
         raise NotImplementedError
 
 
-class ExampleDelivery(ABC):
+class ExampleHttpService(ABC):
 
     @abstractmethod
-    def register_handler(self, method: str, endpoint: str):
+    def example_detail(self, method: str, endpoint: str):
         raise NotImplementedError
