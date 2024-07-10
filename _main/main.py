@@ -4,7 +4,7 @@ import sys
 import urllib.request
 
 name = "AyaPingPing (Py)"
-version = "v4.5.5"
+version = "v4.6.0"
 language = "Python"
 generator_url = "https://raw.githubusercontent.com/dalikewara/ayapingping-sh/master/main_v4.sh"
 generator_file = "main.sh"

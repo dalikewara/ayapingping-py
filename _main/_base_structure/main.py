@@ -1,31 +1,8 @@
-from common.env import parse_env
-from common.mysql_connector import connect_mysql_connector
 from common.flask import flask_server
-from features.example.repositories.findExampleByID.mysql_connector import FindExampleByIDMySQLConnector
-from features.example.usecases.get_example.v1 import GetExampleV1
-from features.example.delivery.handlers.example_get.v1_flask import ExampleGetV1Flask
+from features.example import usecase_v1 as example_usecase_v1, repository_mysql as example_repository_mysql, \
+    http_service_flask as example_http_service_flask
 
-# Parse env
-
-env_cfg, err = parse_env()
-if err is not None:
-    # raise err
-    print()
-
-# Database connection
-
-mysql_db, err = connect_mysql_connector(
-    env_cfg.mysql_host,
-    env_cfg.mysql_port,
-    env_cfg.mysql_user,
-    env_cfg.mysql_password,
-    env_cfg.mysql_db_name
-)
-if err is not None:
-    # raise err
-    print()
-
-# Server initialization
+# Http server initialization
 
 flask_svr, err = flask_server()
 if err is not None:
@@ -33,17 +10,21 @@ if err is not None:
 
 # Repositories
 
-find_example_by_id_mysql_connector = FindExampleByIDMySQLConnector(mysql_db)
+example_repository_mysql = example_repository_mysql.RepositoryMySQL(db=None)
 
 # Use cases
 
-get_example_v1 = GetExampleV1(find_example_by_id_mysql_connector)
+example_usecase_v1 = example_usecase_v1.UseCaseV1(example_repository=example_repository_mysql)
 
-# Register handlers
+# Services
 
-ExampleGetV1Flask(flask_svr, get_example_v1).register_handler('GET', '/api/v1/example/get')
+example_http_service_flask = example_http_service_flask.HttpServiceFlask(client=flask_svr, example_usecase=example_usecase_v1)
+
+# Service handlers
+
+example_http_service_flask.example_detail(method="GET", endpoint="/example")
 
 # Start & listen application
 
 if __name__ == '__main__':
-    flask_svr.run(port=env_cfg.get_rest_port_int(), debug=True)
+    flask_svr.run(port=8080, debug=True)
