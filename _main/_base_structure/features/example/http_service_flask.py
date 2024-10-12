@@ -1,6 +1,6 @@
 from flask import Flask, jsonify
 from domain.example import ExampleHttpService, ExampleUseCase
-from domain.response import new_response_json_success, new_response_json_error
+from common.response import new_response_json_success, new_response_json_error
 
 
 class HttpServiceFlask(ExampleHttpService):
