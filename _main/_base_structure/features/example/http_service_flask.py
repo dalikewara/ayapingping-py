@@ -9,7 +9,7 @@ class HttpServiceFlask(ExampleHttpService):
         self.client = client
         self.example_usecase = example_usecase
 
-    def example_detail(self, method: str, endpoint: str):
+    def detail(self, method: str, endpoint: str):
         @self.client.route(rule=endpoint, methods=[method])
         def example_detail_route_handler():
             try:

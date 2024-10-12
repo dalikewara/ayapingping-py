@@ -57,5 +57,5 @@ class ExampleUseCase(ABC):
 class ExampleHttpService(ABC):
 
     @abstractmethod
-    def example_detail(self, method: str, endpoint: str):
+    def detail(self, method: str, endpoint: str):
         raise NotImplementedError

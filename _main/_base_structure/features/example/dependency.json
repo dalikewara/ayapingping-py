@@ -1,13 +1,13 @@
 {
   "domains": [
-    "example.py",
-    "response.py"
+    "example.py"
   ],
   "features": [],
   "commons": [
     "flask.py",
     "time_now.py",
-    "validate_username.py"
+    "validate_username.py",
+    "response.py"
   ],
   "externals": [
     "Flask==3.0.2"
