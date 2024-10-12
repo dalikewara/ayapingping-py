@@ -22,7 +22,7 @@ example_http_service_flask = example_http_service_flask.HttpServiceFlask(client=
 
 # Service handlers
 
-example_http_service_flask.example_detail(method="GET", endpoint="/example")
+example_http_service_flask.detail(method="GET", endpoint="/example")
 
 # Start & listen application
 
