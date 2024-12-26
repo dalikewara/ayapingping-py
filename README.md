@@ -1,5 +1,7 @@
 # ayapingping-py
 
+> **ayapingping-go** has been rebranded to **[uwais](https://github.com/dalikewara/uwais)**. This repository will stay up forever and won’t be deleted, so you can still use it if needed. However, there won’t be any more updates here since all future updates will be worked on in the new **[uwais](https://github.com/dalikewara/uwais)** repository.
+
 ![python](https://img.shields.io/pypi/pyversions/ayapingping-py.svg?style=flat)
 ![version](https://img.shields.io/pypi/v/ayapingping-py.svg?style=flat)
 ![download](https://img.shields.io/pypi/dm/ayapingping-py.svg?style=flat)
